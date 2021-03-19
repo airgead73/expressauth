@@ -24,9 +24,9 @@ app.use(helmet());
  * MIDDLEWARE
  */
 
+app.use(auth(authConfig));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(auth(authConfig));
 app.use(express.static(path.join(__dirname, './../_public')));
 app.use(cookieParser());
 
@@ -53,14 +53,17 @@ app.use((req, res, next) => {
  * LOAD ROUTES
  */
 
-app.get('/', (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? 'logged in': 'logged out');
-});
+// app.get('/', (req, res) => {
+//   res.send(req.oidc.isAuthenticated() ? 'logged in': 'logged out');
+// });
 
-app.get('/profile', requiresAuth(), (req, res) => {
+// app.get('/profile', requiresAuth(), (req, res) => {
 
-  res.send(req.oidc.user);
+//   res.send(req.oidc.user);
 
-})
+// })
+
+const { clientRouter } = require('./src/controllers/client/routes');
+app.use('/', clientRouter);
 
 module.exports = app;
