@@ -1,7 +1,8 @@
 <header>
 
+
   {{#if isAuthenticated}} 
-  <a href="/logout">logout</a>
+  <p>{{user.name}} | <a href="/logout">logout</a></p> 
   {{else}}
   <a href="/login">login</a>
   {{/if}}

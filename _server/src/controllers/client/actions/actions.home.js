@@ -29,7 +29,7 @@ exports.v_home = asyncHandler(async function(req, res, next) {
     .render('pages/profile', {
       success: true,
       title: 'profile',
-      user: req.oidc.user
+      
     });  
 });
 
