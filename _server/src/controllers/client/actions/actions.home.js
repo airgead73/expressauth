@@ -7,7 +7,13 @@ const asyncHandler = require('../../middleware/handleAsync');
  */
 
 exports.v_home = asyncHandler(async function(req, res, next) {
-  res.send(req.oidc.isAuthenticated() ? 'logged in': 'logged out');
+  //res.send(req.oidc.isAuthenticated() ? 'logged in': 'logged out');
+  return res
+    .status(200)
+    .render('pages/index', {
+      success: true,
+      title: 'home'
+    });
 });
 
 /**
@@ -17,5 +23,28 @@ exports.v_home = asyncHandler(async function(req, res, next) {
  */
 
  exports.v_profile = asyncHandler(async function(req, res, next) {
-  res.send(req.oidc.user);
+  //res.send(req.oidc.user);
+  return res
+    .status(200)
+    .render('pages/profile', {
+      success: true,
+      title: 'profile',
+      user: req.oidc.user
+    });  
+});
+
+/**
+ * @route   GET /
+ * @desc    view profile json
+ * @access  private
+ */
+
+ exports.api_profile = asyncHandler(async function(req, res, next) {
+  //res.send(req.oidc.user);
+  return res
+    .status(200)
+    .json({
+      success: true,
+      user: req.oidc.user
+    });
 });

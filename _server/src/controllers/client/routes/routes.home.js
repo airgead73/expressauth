@@ -4,7 +4,8 @@ const homeRouter = Router();
 // actions
 const {
   v_home,
-  v_profile
+  v_profile,
+  api_profile
 } = require('./../actions/actions.home');
 
 // middleware
@@ -19,6 +20,10 @@ homeRouter
 homeRouter
   .route('/profile')
   .get(requiresAuth(), v_profile);
+
+homeRouter
+  .route('/api/profile')
+  .get(requiresAuth(), api_profile);  
 
 module.exports = {
   homeRouter

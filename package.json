@@ -11,11 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.3",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
     "express-openid-connect": "^2.3.0",
+    "handlebars": "^4.7.7",
     "helmet": "^4.4.1"
   },
   "devDependencies": {
